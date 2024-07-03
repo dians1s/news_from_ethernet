@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}DANNEWS | Главная{% endblock %}
+{% block divs %}
+    <div class="all_news">
+    {% for title, subtitle in output %}
+        <div class="news_letter"><h1>{{ title }}</h1><h2>{{ subtitle }}</h2></div>
+    {% endfor %}
+    </div>
+{% endblock %}

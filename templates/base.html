@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="Самые свежие новости только на этом сайте!">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <style>
+        @font-face {
+            font-family: "ppobjectsans";
+            font-style: normal;
+            font-weight: 600;
+            src: url({% static 'fonts/ppobjectsans.ttf' %});
+        }
+    </style>
+</head>
+
+<body>
+    <header id="navigating" class="navigation">
+        <div class="navbar">
+            <div class="nav_part">
+                <a href="/"><h2 class="logo">DAN<span class="logo_part">NEWS</span></h2></a>
+            </div>
+            {% if user.is_authenticated %}
+            <div class="nav_part">
+                <button onclick="location.href='profile'" class="auth_button"><span class="auth_span">{{ user.username }}</span></button>
+            </div>
+            {% else %}
+            <div class="nav_part">
+                <button onclick="location.href='{% url 'login' %}'" class="auth_button"><span class="auth_span">Авторизация</span></button>
+            </div>
+            {% endif %}
+        </div>
+    </header>
+    {% block divs %}
+    {% endblock %}
+    <footer class="underlist">
+        
+    </footer>
+    
+    {% block scripts %}
+        <script src="{% static 'js/nav.js' %}"></script>
+    {% endblock %}
+</body>
+
+</html>

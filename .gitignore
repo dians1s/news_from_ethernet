@@ -1,0 +1,7 @@
+.vscode/
+__pycache__
+migrations
+__init__.py
+asgi.py
+tests.py
+.env
